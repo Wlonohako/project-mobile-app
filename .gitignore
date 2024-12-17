@@ -1,0 +1,37 @@
+# Gradle files
+.gradle
+/local.properties
+
+# Android Studio files
+.idea/
+*.iml
+*.hprof
+/shelf/
+workspace.xml
+
+# Build outputs
+/build/
+app/build/
+.captures
+.externalNativeBuild/
+.cxx/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Miscellaneous
+*.log
+*.keystore
+*.jks
+
+# Exclude generated and temp files
+**/out/
+**/generated/
+
+# Kotlin-specific files
+*.kts
+
+# Gradle Wrapper files (optional)
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
