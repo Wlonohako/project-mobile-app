@@ -1,8 +1,11 @@
 package com.example.workplease
 
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +20,6 @@ class MainForm : AppCompatActivity() {
 
         val saveButton = findViewById<Button>(R.id.saveButton)
         val screenTwoButton = findViewById<Button>(R.id.ScreenTwoButton)
-
         screenTwoButton.setOnClickListener {
             val intent = Intent(this, HumanList::class.java)
             startActivity(intent)
@@ -48,18 +50,16 @@ class MainForm : AppCompatActivity() {
                     .show()
                 return@setOnClickListener
             }
-            val dict = mapOf(
-                "name" to nameTextInput,
-                "surname" to surnameTextInput,
-                "age" to ageNumberInput,
-                "high" to highNumberInput,
-                "weight" to weightNumberInput
+            saveData(
+                this,
+                nameTextInput,
+                surnameTextInput,
+                ageNumberInput.toInt(),
+                highNumberInput.toInt(),
+                weightNumberInput.toInt()
             )
-            val json = Gson().toJson(dict)
-            saveSharedPreferences(json)
-
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
-
+//            Toast.makeText(this, getPersonList(this).toString(), Toast.LENGTH_LONG).show()
 
         }
     }
