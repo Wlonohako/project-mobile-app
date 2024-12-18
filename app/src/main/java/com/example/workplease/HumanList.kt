@@ -10,15 +10,15 @@ class HumanList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_human_list)
-//
-//        val recyclerView: RecyclerView = findViewById(R.id.recycleViewPeople)
-//
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//
-//        // Fetch the list from SharedPreferences
-//        val personList = getPersonList(this)
-//        val adapter = PersonAdapter(personList)
-//
-//        recyclerView.adapter = adapter
+
+        val recyclerView: RecyclerView = findViewById(R.id.recycleViewPeople)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Fetch the list from SharedPreferences
+        val personList = getPersonList(this)
+        val adapter = PersonAdapter(personList)
+
+        recyclerView.adapter = adapter
     }
 }

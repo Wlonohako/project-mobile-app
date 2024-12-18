@@ -22,11 +22,11 @@
             app:titleTextColor="#FFFAFA" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/recycleViewPeople"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"-->
-    <!--        tools:itemCount="5"-->
-    <!--        tools:listitem="@layout/item_human" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleViewPeople"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_human" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

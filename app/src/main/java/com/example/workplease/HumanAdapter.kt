@@ -12,11 +12,11 @@ class PersonAdapter(private val personList: List<Person>) :
 
     // ViewHolder class for each item
     class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val name = itemView.findViewById<EditText>(R.id.nameTV)
-        val surname = itemView.findViewById<EditText>(R.id.surnameTV)
-        val age = itemView.findViewById<EditText>(R.id.ageTV)
-        val high = itemView.findViewById<EditText>(R.id.highTV)
-        val weight = itemView.findViewById<EditText>(R.id.weightTV)
+        val name = itemView.findViewById<TextView>(R.id.nameTV)
+        val surname = itemView.findViewById<TextView>(R.id.surnameTV)
+        val age = itemView.findViewById<TextView>(R.id.ageTV)
+        val high = itemView.findViewById<TextView>(R.id.highTV)
+        val weight = itemView.findViewById<TextView>(R.id.weightTV)
 
     }
 
