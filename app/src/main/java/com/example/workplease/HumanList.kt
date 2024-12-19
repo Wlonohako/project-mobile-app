@@ -16,8 +16,8 @@ class HumanList : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Fetch the list from SharedPreferences
-        val personList = getPersonList(this)
-        val adapter = PersonAdapter(personList)
+        val personList = getPersonList(this).toMutableList()
+        val adapter = PersonAdapter(this, personList)
 
         recyclerView.adapter = adapter
     }
