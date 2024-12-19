@@ -1,16 +1,12 @@
 package com.example.workplease
 
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-import com.google.gson.Gson
 
 class MainForm : AppCompatActivity() {
 
@@ -21,7 +17,7 @@ class MainForm : AppCompatActivity() {
         val saveButton = findViewById<Button>(R.id.saveButton)
         val screenTwoButton = findViewById<Button>(R.id.ScreenTwoButton)
         screenTwoButton.setOnClickListener {
-            val intent = Intent(this, HumanList::class.java)
+            val intent = Intent(this, PersonList::class.java)
             startActivity(intent)
         }
 

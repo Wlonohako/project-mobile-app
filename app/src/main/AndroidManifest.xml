@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HumanList"></activity>
+        <activity android:name=".PersonList"></activity>
     </application>
 
 </manifest>

@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class HumanList : AppCompatActivity() {
+class PersonList : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_human_list)
+        setContentView(R.layout.activity_person_list)
 
         val recyclerView: RecyclerView = findViewById(R.id.recycleViewPeople)
         recyclerView.layoutManager = LinearLayoutManager(this)
