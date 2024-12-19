@@ -2,6 +2,7 @@ package com.example.workplease;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -78,4 +79,5 @@ fun deletePersonFromPreferences(context: Context, person: Person) {
     val updatedListJson = gson.toJson(personList);
     editor.putString(keyName, updatedListJson);
     editor.apply();
+    Toast.makeText(context, "Usunięto osobę", Toast.LENGTH_SHORT).show()
 }
