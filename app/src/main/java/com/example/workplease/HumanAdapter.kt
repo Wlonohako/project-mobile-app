@@ -6,21 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class PersonAdapter(
-    private val context: Context, // Add context as a parameter
+    private val context: Context,
     private val personList: MutableList<Person>
 ) : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
 
     class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val name = itemView.findViewById<TextView>(R.id.nameTV)
-        val surname = itemView.findViewById<TextView>(R.id.surnameTV)
-        val age = itemView.findViewById<TextView>(R.id.ageTV)
-        val high = itemView.findViewById<TextView>(R.id.highTV)
-        val weight = itemView.findViewById<TextView>(R.id.weightTV)
-        val deleteButton = itemView.findViewById<Button>(R.id.deleteButton)
+        val name: TextView = itemView.findViewById(R.id.nameTV)
+        val surname: TextView = itemView.findViewById(R.id.surnameTV)
+        val age: TextView = itemView.findViewById(R.id.ageTV)
+        val height: TextView = itemView.findViewById(R.id.highTV)
+        val weight: TextView = itemView.findViewById(R.id.weightTV)
+        val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
@@ -33,26 +32,17 @@ class PersonAdapter(
         holder.name.text = "Imię: ${person.name}"
         holder.surname.text = "Nazwisko: ${person.surname}"
         holder.age.text = "Wiek: ${person.age}"
-        holder.high.text = "Wysokość: ${person.height}"
+        holder.height.text = "Wysokość: ${person.height}"
         holder.weight.text = "Waga: ${person.weight}"
 
         holder.deleteButton.setOnClickListener {
-            val personToDelete = Person(
-                name = person.name,
-                surname = person.surname,
-                age = person.age,
-                height = person.height,
-                weight = person.weight
-            )
-            // Use the context passed to the adapter
-            deletePersonFromPreferences(context, personToDelete)
+            deletePersonFromPreferences(context, person)
             personList.removeAt(position)
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position, personList.size)
+            notifyItemRangeChanged(position, personList.size - position)
         }
     }
 
-    override fun getItemCount(): Int {
-        return personList.size
-    }
+    override fun getItemCount(): Int = personList.size
+
 }

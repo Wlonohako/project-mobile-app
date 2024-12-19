@@ -1,12 +1,12 @@
-package com.example.workplease
+package com.example.workplease;
 
-import android.content.Context
-import android.content.SharedPreferences
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-
-const val listName = "femboy"
+const val listName = "AppPreferences";
+const val keyName = "personList"
 
 data class Person(
     val name: String,
@@ -14,7 +14,7 @@ data class Person(
     val age: Int,
     val height: Int,
     val weight: Int
-)
+);
 
 fun saveData(
     context: Context,
@@ -25,69 +25,57 @@ fun saveData(
     weight: Int
 ) {
     val sharedPreferences: SharedPreferences =
-        context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    val gson = Gson()
+        context.getSharedPreferences(listName, Context.MODE_PRIVATE);
+    val editor = sharedPreferences.edit();
+    val gson = Gson();
 
-    // Load existing list or create a new one if it doesn't exist
-    val existingListJson = sharedPreferences.getString("personList", null)
-    val type = object : TypeToken<MutableList<Person>>() {}.type
+    val existingListJson = sharedPreferences.getString(keyName, null);
+    val type = object : TypeToken<MutableList<Person>>() {}.type;
     val personList: MutableList<Person> = if (existingListJson != null) {
-        gson.fromJson(existingListJson, type)
+        gson.fromJson(existingListJson, type);
     } else {
-        mutableListOf()
+        mutableListOf();
     }
 
-    // Add the new person to the list
-    val newPerson = Person(name, surname, age, height, weight)
-    personList.add(newPerson)
+    val newPerson = Person(name, surname, age, height, weight);
+    personList.add(newPerson);
 
-    // Save the updated list back to SharedPreferences
-    val updatedListJson = gson.toJson(personList)
-    editor.putString("personList", updatedListJson)
-    editor.apply()
+    val updatedListJson = gson.toJson(personList);
+    editor.putString(keyName, updatedListJson);
+    editor.apply();
 }
 
 fun getPersonList(context: Context): List<Person> {
-    // Get SharedPreferences
     val sharedPreferences: SharedPreferences =
-        context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-    val gson = Gson()
+        context.getSharedPreferences(listName, Context.MODE_PRIVATE);
+    val gson = Gson();
 
-    // Get existing list or return empty if it doesn't exist
-    val existingListJson = sharedPreferences.getString("personList", null)
-    val type = object : TypeToken<MutableList<Person>>() {}.type
+    val existingListJson = sharedPreferences.getString(keyName, null);
+    val type = object : TypeToken<MutableList<Person>>() {}.type;
     return if (existingListJson != null) {
-        gson.fromJson(existingListJson, type)
+        gson.fromJson(existingListJson, type);
     } else {
-        emptyList()
+        emptyList();
     }
 }
 
 fun deletePersonFromPreferences(context: Context, person: Person) {
     val sharedPreferences: SharedPreferences =
-        context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    val gson = Gson()
+        context.getSharedPreferences(listName, Context.MODE_PRIVATE);
+    val editor = sharedPreferences.edit();
+    val gson = Gson();
 
-    // Load the existing list
-    val existingListJson = sharedPreferences.getString("personList", null)
-    val type = object : TypeToken<MutableList<Person>>() {}.type
+    val existingListJson = sharedPreferences.getString(keyName, null);
+    val type = object : TypeToken<MutableList<Person>>() {}.type;
     val personList: MutableList<Person> = if (existingListJson != null) {
-        gson.fromJson(existingListJson, type)
+        gson.fromJson(existingListJson, type);
     } else {
-        mutableListOf()
+        mutableListOf();
     }
 
-    // Remove the specified person
-    personList.remove(person)
+    personList.remove(person);
 
-    // Save the updated list back to SharedPreferences
-    val updatedListJson = gson.toJson(personList)
-    editor.putString("personList", updatedListJson)
-    editor.apply()
+    val updatedListJson = gson.toJson(personList);
+    editor.putString(keyName, updatedListJson);
+    editor.apply();
 }
-
-
-
-
