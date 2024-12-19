@@ -29,20 +29,20 @@ class MainForm : AppCompatActivity() {
             val weightNumberInput = findViewById<EditText>(R.id.weightInput).text.toString()
 
             if (nameTextInput.isEmpty() || surnameTextInput.isEmpty() || ageNumberInput.isEmpty() || highNumberInput.isEmpty() || weightNumberInput.isEmpty()) {
-                Toast.makeText(this, "All fields required", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Wszystkie pola wymagane", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (ageNumberInput.toInt() < 0) {
-                Toast.makeText(this, "Age must be greater than 0", Toast.LENGTH_SHORT).show()
+            if (ageNumberInput.toInt() <= 0) {
+                Toast.makeText(this, "Wiek muszi być większy niż 0", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if (highNumberInput.toInt() !in 50..250) {
-                Toast.makeText(this, "High must be between 50cm and 250cm", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Wysokość musi być pomiędzy 50cm i 250cm", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
             if (weightNumberInput.toInt() !in 3..200) {
-                Toast.makeText(this, "Weight must be between 3kg and 200kg", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Waga musi być pomiędzy 3kg i 200kg", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
@@ -54,8 +54,7 @@ class MainForm : AppCompatActivity() {
                 highNumberInput.toInt(),
                 weightNumberInput.toInt()
             )
-            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
-//            Toast.makeText(this, getPersonList(this).toString(), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Zapisano", Toast.LENGTH_SHORT).show()
 
         }
     }
